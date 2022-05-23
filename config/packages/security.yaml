@@ -1,0 +1,19 @@
+security:
+    providers:
+        in_memory: { memory: null }
+    firewalls:
+        api:
+            anonymous: ~
+            logout: ~
+            pattern: ^/api
+            guard:
+                authenticators:
+                    - App\Security\XAuthTokenAuthenticator
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+
+    access_control:
+         - { path: ^/api, roles: ROLE_USER }

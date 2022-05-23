@@ -1,0 +1,76 @@
+<?php //%255B03ce9171e54c1351651b7e81ac730234%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'passportCode' => [
+                        0,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT p0_.id AS id_0, p0_.issued_by AS issued_by_1, p0_.issuer_code AS issuer_code_2, p0_.cbduig_code AS cbduig_code_3, p0_.passport_code AS passport_code_4, p0_.region_id AS region_id_5 FROM passport_issuer p0_ WHERE p0_.passport_code = ? LIMIT 10',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'i' => 'App\\Entity\\PassportIssuer',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'issued_by_1' => 'issuedBy',
+                    'issuer_code_2' => 'issuerCode',
+                    'cbduig_code_3' => 'cbduigCode',
+                    'passport_code_4' => 'passportCode',
+                    'region_id_5' => 'regionId',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'i' => null,
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'i',
+                    'issued_by_1' => 'i',
+                    'issuer_code_2' => 'i',
+                    'cbduig_code_3' => 'i',
+                    'passport_code_4' => 'i',
+                    'region_id_5' => 'i',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\PassportIssuer',
+                    'issued_by_1' => 'App\\Entity\\PassportIssuer',
+                    'issuer_code_2' => 'App\\Entity\\PassportIssuer',
+                    'cbduig_code_3' => 'App\\Entity\\PassportIssuer',
+                    'passport_code_4' => 'App\\Entity\\PassportIssuer',
+                    'region_id_5' => 'App\\Entity\\PassportIssuer',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

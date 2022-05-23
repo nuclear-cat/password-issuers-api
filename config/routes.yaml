@@ -1,0 +1,3 @@
+passport:
+    path: /api/passport_issuers
+    controller: App\Controller\PassportIssuerController::getIssuers
