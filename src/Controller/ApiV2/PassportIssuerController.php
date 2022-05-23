@@ -1,27 +1,28 @@
 <?php declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\ApiV2;
 
-use App\Entity\PassportIssuer;
-use App\Repository\PassportIssuerRepository;
+use App\Entity\PassportIssuerV2;
+use App\Repository\PassportIssuerV2Repository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class PassportIssuerController extends AbstractController
 {
-    public function getIssuers(Request $request, PassportIssuerRepository $repository): JsonResponse
+    public function getIssuers(Request $request, PassportIssuerV2Repository $repository): JsonResponse
     {
         $issuers = $repository->fetchFromFilters($request->query->get('passportCode'));
         $issuersData = [];
 
-        /** @var PassportIssuer $issuer */
+        /** @var PassportIssuerV2 $issuer */
         foreach ($issuers as $issuer) {
             $issuersData[] = [
                 'id' => $issuer->getId(),
-                'issued_by' => $issuer->getIssuedBy(),
-                'region_id' => $issuer->getRegionId(),
-                'passport_code' => $issuer->getPassportCode(),
+                'code' => $issuer->getCode(),
+                'name' => $issuer->getName(),
+                'end_date' => $issuer->getEndDate() ? $issuer->getEndDate()->format('Y-m-d') : null,
+
             ];
         }
 

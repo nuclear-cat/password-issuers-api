@@ -1,3 +1,7 @@
-passport:
+api_v1_passport_issuers:
     path: /api/passport_issuers
     controller: App\Controller\PassportIssuerController::getIssuers
+
+api_v2_passport_issuers:
+    path: /api/v2/passport_issuers
+    controller: App\Controller\ApiV2\PassportIssuerController::getIssuers

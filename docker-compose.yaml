@@ -1,0 +1,51 @@
+version: '3.5'
+
+services:
+   passport-issuers-nginx:
+      container_name: passport-issuers-nginx
+      build:
+         context: ./docker/dev
+         dockerfile: nginx.docker
+      volumes:
+         - ./:/app
+         - ./docker/dev/nginx/app.conf:/etc/nginx/app.conf
+      depends_on:
+         - passport-issuers-php-fpm
+      ports:
+         - "8094:81"
+      networks:
+          - passport-issuers
+
+   passport-issuers-php-fpm:
+      container_name: passport-issuers-php-fpm
+      build:
+         context: ./docker/dev
+         dockerfile: php-fpm.docker
+      depends_on:
+         - passport-issuers-postgres
+      volumes:
+         - ./:/app
+      working_dir: /app
+      networks:
+          - passport-issuers
+
+   passport-issuers-postgres:
+      container_name: passport-issuers-postgres
+      image: postgres:13.0-alpine
+      environment:
+         POSTGRES_USER: user
+         POSTGRES_PASSWORD: password
+         POSTGRES_DB: default
+      ports:
+         - "5437:5432"
+      networks:
+         - passport-issuers
+
+volumes:
+    composer:
+    swagger-json:
+
+networks:
+   passport-issuers:
+        name: passport-issuers
+        driver: bridge

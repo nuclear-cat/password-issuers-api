@@ -1,11 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PassportIssuerRepository;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PassportIssuerRepository")
+ * @ORM\Entity(repositoryClass=PassportIssuerRepository::class)
  */
 class PassportIssuer
 {
@@ -13,32 +14,32 @@ class PassportIssuer
      * @ORM\Id()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $issuedBy;
+    private string $issuedBy;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $issuerCode;
+    private string $issuerCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $cbduigCode;
+    private string $cbduigCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $passportCode;
+    private string $passportCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $regionId;
+    private string $regionId;
 
     public function getId(): ?int
     {
@@ -76,24 +77,24 @@ class PassportIssuer
         return $this;
     }
 
-    public function getPassportCode(): ?int
+    public function getPassportCode(): ?string
     {
         return $this->passportCode;
     }
 
-    public function setPassportCode(int $passportCode): self
+    public function setPassportCode(string $passportCode): self
     {
         $this->passportCode = $passportCode;
 
         return $this;
     }
 
-    public function getRegionId(): ?int
+    public function getRegionId(): ?string
     {
         return $this->regionId;
     }
 
-    public function setRegionId(int $regionId): self
+    public function setRegionId(string $regionId): self
     {
         $this->regionId = $regionId;
 
