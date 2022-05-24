@@ -46,6 +46,10 @@ class ImportV2Command extends Command
             $data = str_getcsv($line, ';');
 //            $lineNumber = $key + 1;
 
+            if (!isset($data[0]) || empty($data[0])) {
+                continue;
+            }
+
             $id = (int)$data[0];
             $code = $data[1];
             $name = $data[2];
