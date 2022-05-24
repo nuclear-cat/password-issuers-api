@@ -32,7 +32,7 @@ class ImportV2Command extends Command
         $fileLines = explode(PHP_EOL, $fileContent);
 //        $totalLines = count($fileLines);
 
-        $stmt = $this->entityManager->getConnection()->prepare('DELETE FROM passport_issuer e WHERE 1 = 1');
+        $stmt = $this->entityManager->getConnection()->prepare('DELETE FROM passport_issuer_v2 e WHERE 1 = 1');
         $stmt->executeQuery();
 
         $i = 0;
